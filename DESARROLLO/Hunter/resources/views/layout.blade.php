@@ -23,10 +23,13 @@
 		} ?>
 		<nav>
 			<a class= "{{ activeMenu('/') }}" href="{{ route('home') }}">Inicio</a>
-			
-			<a class= "{{ activeMenu('saludos/*') }}" href="{{ route('saludos','Johana')}}">Saludo</a>
+			<a class= "{{ activeMenu('saludos*') }}" href="{{ route('saludos','Mauricio')}}">Saludo</a>
 
-			<a class= "{{ activeMenu('contactame')}}" href="{{ route('contactos')}}" >Contactos</a>
+			<a class= "{{ activeMenu('mensajes/create')}}" href="{{ route('mensajes.create')}}" >Contactos</a>
+			<a class= "{{ activeMenu('mensajes')}}" href="{{ route('mensajes.index')}}" >Mensajes</a>
+			@if(auth()->guest())
+			 	<a class= "{{ activeMenu('login')}}" href="/login" >Login</a>
+			@endif
 		</nav>
 	</header>
 

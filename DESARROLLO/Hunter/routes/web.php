@@ -1,12 +1,15 @@
 <?php
 
-Route::get('/', ['as' => 'home','uses'=>'PageController@home'])->middleware('example'); 
+Route::get('/', ['as' => 'home','uses'=>'PageController@home']); 
+Route::get('saludos/{nombre?}', ['as' => 'saludos','uses'=>'PageController@saludos'])-> where ('nombre',"[A-Za-z]+");
 
-Route::get('contactame', ['as' => 'contactos','uses'=>'PageController@contact']); 
-Route::post('contacto','PageController@mensajes');
-Route::get('saludos/{nombre?}', ['as' => 'saludos','uses'=>'PageController@saludo'])-> where ('nombre',"[A-Za-z]+");
+//Mensajes
+Route::resource('mensajes','MessagesController');
 
+//Login
+Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 
